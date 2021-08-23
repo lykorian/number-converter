@@ -19,12 +19,25 @@ import javax.validation.constraints.Min;
 @Controller(value = "/romannumeral")
 public class RomanNumeralNumberConverterController {
 
+    /**
+     * Request logger.
+     */
     private static final Logger LOG = LoggerFactory.getLogger(RomanNumeralNumberConverterController.class);
 
+    /**
+     * Injected Roman numeral converter service.
+     */
     @Inject
     @Named("romanNumeral")
     private NumberConverter converter;
 
+    /**
+     * Perform the conversion of an Integer to a Roman numeral given the annotated constraints.  Result will be
+     * serialized as JSON to the HTTP response.
+     *
+     * @param query Integer value between 1 and 3999
+     * @return JSON response containing input value and conversion result
+     */
     @Get
     public HttpResponse<ConversionResponse> convert(
         @Min(value = 1, message = "Number must be 1 or greater.")

@@ -13,18 +13,30 @@ import javax.validation.constraints.Min;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Number converter implementing conversion of Integer values to Roman numerals.
+ */
 @Singleton
 @Named("romanNumeral")
 public class RomanNumeralNumberConverter implements NumberConverter {
 
+    /**
+     * Service logger.
+     */
     private static final Logger LOG = LoggerFactory.getLogger(RomanNumeralNumberConverter.class);
 
+    /**
+     * Map of thousandths place digits and their corresponding Roman numeral representations.
+     */
     private static final Map<String, String> THOUSANDS = ImmutableMap.of(
         "1", "M",
         "2", "MM",
         "3", "MMM"
     );
 
+    /**
+     * Map of hundredths place digits and their corresponding Roman numeral representations.
+     */
     private static final Map<String, String> HUNDREDS = new ImmutableMap.Builder<String, String>()
         .put("1", "C")
         .put("2", "CC")
@@ -37,6 +49,9 @@ public class RomanNumeralNumberConverter implements NumberConverter {
         .put("9", "CM")
         .build();
 
+    /**
+     * Map of tens digits and their corresponding Roman numeral representations.
+     */
     private static final Map<String, String> TENS = new ImmutableMap.Builder<String, String>()
         .put("1", "X")
         .put("2", "XX")
@@ -49,6 +64,9 @@ public class RomanNumeralNumberConverter implements NumberConverter {
         .put("9", "XC")
         .build();
 
+    /**
+     * Map of ones digits and their corresponding Roman numeral representations.
+     */
     private static final Map<String, String> ONES = new ImmutableMap.Builder<String, String>()
         .put("1", "I")
         .put("2", "II")
@@ -74,6 +92,15 @@ public class RomanNumeralNumberConverter implements NumberConverter {
         NUMERAL_MAP.put(1000, "M");
     }
 
+    /**
+     * Convert an Integer value to the corresponding Roman numeral representation given the provided constraints.
+     * <p>
+     * NOTE: constraints are replicated here to ensure valid input regardless of where service is consumed.
+     * Controllers/consumers are responsible for providing context-appropriate messaging to the client.
+     *
+     * @param value Integer value
+     * @return Roman numeral
+     */
     @Override
     @NonNull
     public String convert(
@@ -88,6 +115,12 @@ public class RomanNumeralNumberConverter implements NumberConverter {
         return result;
     }
 
+    /**
+     * Recursively convert the value for each input digit to the corresponding Roman numeral representation.
+     *
+     * @param value current value to convert
+     * @return converted value for the given digit
+     */
     private String convertValue(final String value) {
         final int intValue = Integer.parseInt(value);
 
@@ -108,10 +141,23 @@ public class RomanNumeralNumberConverter implements NumberConverter {
         return result;
     }
 
+    /**
+     * Get the Roman numeral value from the provided conversion map.
+     *
+     * @param conversionMap map of digits to Roman numerals
+     * @param value current input value
+     * @return Roman numeral for current digit
+     */
     private String getConvertedValue(final Map<String, String> conversionMap, final Integer value) {
         return conversionMap.getOrDefault(String.valueOf(value).substring(0, 1), "");
     }
 
+    /**
+     * Remove the leading digit from a String representation of an Integer value.
+     *
+     * @param value String value of a given Integer
+     * @return String representation of the input value with the leading digit removed
+     */
     private String removeDigit(final String value) {
         return value.substring(1);
     }
