@@ -132,7 +132,7 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <configuration>
                     <to>
-                        <image>hub.docker.com/repository/docker/${jib.docker.repository}/${jib.docker.image}:${jib.docker.tag}</image>
+                        <image>docker.io/${jib.docker.repository}/${jib.docker.image}:${jib.docker.tag}</image>
                     </to>
                 </configuration>
             </plugin>
