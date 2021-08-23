@@ -2,6 +2,8 @@ package com.adobe.engineering.numberconverter.services.impl;
 
 import com.adobe.engineering.numberconverter.services.NumberConverter;
 import com.google.common.collect.ImmutableMap;
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import io.micronaut.core.annotation.NonNull;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
@@ -103,6 +105,8 @@ public class RomanNumeralNumberConverter implements NumberConverter {
      */
     @Override
     @NonNull
+    @Timed(extraTags = { "service", "romanNumeral" })
+    @Counted(extraTags = { "service", "romanNumeral" })
     public String convert(
         @NonNull
         @Min(1)

@@ -2,6 +2,8 @@ package com.adobe.engineering.numberconverter.controllers;
 
 import com.adobe.engineering.numberconverter.models.ConversionResponse;
 import com.adobe.engineering.numberconverter.services.NumberConverter;
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -39,6 +41,8 @@ public class RomanNumeralNumberConverterController {
      * @return JSON response containing input value and conversion result
      */
     @Get
+    @Timed(extraTags = { "controller", "romanNumeral" })
+    @Counted(extraTags = { "controller", "romanNumeral" })
     public HttpResponse<ConversionResponse> convert(
         @Min(value = 1, message = "Number must be 1 or greater.")
         @Max(value = 3999, message = "Number must be 3999 or less.")

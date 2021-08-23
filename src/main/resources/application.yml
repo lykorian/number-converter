@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: romannumeralconverter
+    name: number-converter
 endpoints:
   beans:
     sensitive: false
@@ -11,11 +11,6 @@ endpoints:
     details-visible: ANONYMOUS
   metrics:
     enabled: true
-    export:
-      atlas:
-        enabled: true #disable locally with per env config?
-        uri: http://localhost:7101/api/v1/publish
-        step: PT1M
   routes:
     sensitive: false
   loggers:
