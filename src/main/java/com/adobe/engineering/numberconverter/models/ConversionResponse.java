@@ -1,10 +1,12 @@
 package com.adobe.engineering.numberconverter.models;
 
 import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * Represents the service response for a number conversion to be serialized as JSON.
  */
+@Schema(description = "Service response for a number conversion.")
 public final class ConversionResponse {
 
     private final Integer input;
@@ -27,6 +29,7 @@ public final class ConversionResponse {
      *
      * @return input value
      */
+    @Schema(description = "input value")
     public String getInput() {
         return String.valueOf(input);
     }
@@ -36,6 +39,7 @@ public final class ConversionResponse {
      *
      * @return conversion result
      */
+    @Schema(description = "conversion result")
     public String getOutput() {
         return output;
     }

@@ -1,6 +1,11 @@
 micronaut:
   application:
     name: number-converter
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
 endpoints:
   beans:
     sensitive: false
