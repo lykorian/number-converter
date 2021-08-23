@@ -10,6 +10,8 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>${packaging}</packaging>
 
+    <url>https://github.com/lykorian/number-converter</url>
+
     <parent>
         <groupId>io.micronaut</groupId>
         <artifactId>micronaut-parent</artifactId>
@@ -82,7 +84,6 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <!--<version>5.7.0</version>-->
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -132,7 +133,7 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <configuration>
                     <to>
-                        <image>docker.io/${jib.docker.repository}/${jib.docker.image}:${jib.docker.tag}</image>
+                        <image>ghcr.io/${jib.docker.repository}/${jib.docker.image}:${jib.docker.tag}</image>
                     </to>
                 </configuration>
             </plugin>
