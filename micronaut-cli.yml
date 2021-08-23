@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.adobe.engineering.romannumeralconverter
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, github-workflow-docker-registry, http-client, java, java-application, junit, management, maven, micrometer, micrometer-atlas, netty-server, readme, shade, slf4j-simple, yaml]
