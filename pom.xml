@@ -123,7 +123,7 @@
                     </annotationProcessorPaths>
                     <compilerArgs>
                         <arg>-Amicronaut.processing.group=com.adobe.engineering.numberconverter</arg>
-                        <arg>-Amicronaut.processing.module=romannumeralconverter</arg>
+                        <arg>-Amicronaut.processing.module=number-converter</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
@@ -132,7 +132,7 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <configuration>
                     <to>
-                        <image>docker.io/${jib.docker.repository}/${jib.docker.image}:${jib.docker.tag}</image>
+                        <image>hub.docker.com/repository/docker/${jib.docker.repository}/${jib.docker.image}:${jib.docker.tag}</image>
                     </to>
                 </configuration>
             </plugin>

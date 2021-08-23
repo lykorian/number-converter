@@ -1,8 +1,12 @@
 # Roman Numeral Converter
 
+## Usage
+
+
 ## TODO
 
 - Documentation of all aspects
+  - Swagger for API and push to GitHub pages?
 - Deployment strategy
 - Docker image
 
@@ -57,7 +61,7 @@ Workflow file: [`.github/workflows/maven.yml`](.github/workflows/maven.yml)
 
 ### Workflow description
 
-For pushes to the `master` branch, the workflow will:
+For pushes to the `main` branch, the workflow will:
 
 1. Setup the build environment with respect to the selected java/graalvm version.
 2. Login to docker registry based on provided configuration.
