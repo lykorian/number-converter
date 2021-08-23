@@ -1,50 +1,63 @@
-# Roman Numeral Converter
+# Number Converter
 
-## Usage
+Service for providing conversion of numeric values into alternative representations. Currently, Roman numeral
+representation is the only implemented conversion.
 
+## Technologies
+
+- [Micronaut](https://micronaut.io/) (Full stack JVM-based framework)
+- [Logback](http://logback.qos.ch/) (Application logging)
+- [Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/) (Metrics - currently implemented
+  in-memory only)
+- [Jib Maven Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) (For containerization
+  during Maven build)
+- [Swagger](https://swagger.io/) (API documentation)
 
 ## TODO
 
-- Documentation of all aspects
-  - Swagger for API and push to GitHub pages?
-- Deployment strategy
-- Docker image
+- Refine conversion service
+- More tests - 100% coverage
+- AWS elastic beanstalk deployment - automate via GitHub actions?
+  - add arbitrary env-specific features?
+- Hosted SwaggerUI?
 
-## Requirements
+## Roman Numeral Conversion
 
-Your HTTP Endpoint must accept a URI in this format:
-http://localhost:8080/romannumeral?query={integer}
+- [Specification](https://roman-numerals.info/)
 
-{integer} must be any integer value in the range 1-3999.
+## Getting Started
 
-Errors can be returned in plain text format.
+## API
 
-Include additional DevOps capabilities in your project to represent how you would prepare your project for ease of operation in a production environment (e.g. metrics, monitoring, logging, etc.). Add tooling to build a runnable Docker container for your service if you are familiar with Docker.
-
-## Rules
-
-For the number to Roman numeral conversion itself, do not use existing code or libraries. We want to see your development methodology in action.
-
-Use Java or JavaScript as the programming language. If you wish to work in another language, please ask first in response to the email accompanying this test.
-
-Use a public Github repository for your work. Include the link to the Github repository in your response. You may use publicly available technologies for the HTTP server, test framework, etc. Please identify any such dependencies you use.
+http://localhost:8080/swagger-ui/index.html
 
 ## Tips
 
 - Find and reference a specification for Roman numerals online. Wikipedia is acceptable.
 - Provide clear and concise documentation:
-  - README.md with:
-    - How to build and run your project.
-    - Your engineering and testing methodology.
-    - Your packaging layout
-    - Dependency attribution
-  - Inline documentation in your source code
+    - README.md with:
+        - How to build and run your project.
+        - Your engineering and testing methodology.
+        - Your packaging layout
+        - Dependency attribution
+    - Inline documentation in your source code
 - Tests
 - Error Handling
 
-## Resources
+## Framework Evaluation
 
-- https://roman-numerals.info/
+Spring Boot and Micronaut were evaluated for implementing this application. Both were viable, but Micronaut had
+advantages in the following areas:
+
+- Minimal required configuration
+- Faster startup time
+- Robust JUnit5 support
+- Cloud-native
+- Built-in support for management tooling, building Docker images, and generating Swagger documentation
+
+Micronaut vs Spring Boot
+
+## Resources
 
 ## Micronaut 3.0.0 Documentation
 
