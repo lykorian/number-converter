@@ -1,11 +1,20 @@
 # Number Converter
 
+[Mark Daugherty](mailto:mark.r.daugherty@gmail.com)
+
 Service for providing conversion of numeric values into alternative representations. Currently, Roman numeral
 representation is the only implemented conversion.
 
-## Roman Numeral Conversion Specification
+## TODO
 
-Conversion has been implemented according to the following specification:
+- Refine conversion service
+- AWS elastic beanstalk deployment - automate via GitHub actions?
+    - add arbitrary env-specific features?
+- Swagger for mgmt endpoints
+
+## Specification
+
+Roman numeral conversion has been implemented according to the following specification:
 
 https://roman-numerals.info/
 
@@ -13,8 +22,8 @@ https://roman-numerals.info/
 
 - [Micronaut](https://micronaut.io/) (Full stack JVM-based framework)
 - [Logback](http://logback.qos.ch/) (Application logging)
-- [Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/) (Metrics - currently implemented
-  in-memory only)
+- [Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/) (Metrics - currently in-memory
+  only)
 - [Jib Maven Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) (For containerization
   during Maven build)
 - [Swagger](https://swagger.io/) (API documentation)
@@ -37,16 +46,6 @@ the [API documentation](https://numberconverter.lykorian.dev/swagger-ui/index.ht
 
 The Number Converter app is deployed to AWS Elastic Beanstalk by a Github Action triggered upon push to the `main`
 branch of the project GitHub repository.
-
-## How to Build and Deploy
-
-## TODO
-
-- Refine conversion service
-- AWS elastic beanstalk deployment - automate via GitHub actions?
-    - add arbitrary env-specific features?
-- Hosted SwaggerUI?
-- Swagger for mgmt endpoints
 
 ## Tips
 
@@ -118,3 +117,7 @@ documentation.
 - `DOCKER_REGISTRY_URL` - No need to configure for DockerHub
 
 > See [docker/login-action for GCR](https://github.com/docker/login-action#dockerhub)
+
+## Versioning
+
+Follows [Semantic Versioning](http://semver.org/) guidelines.
