@@ -23,6 +23,7 @@
         <jdk.version>11</jdk.version>
         <release.version>11</release.version>
         <micronaut.version>3.0.0</micronaut.version>
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <jib.docker.repository>lykorian</jib.docker.repository>
         <jib.docker.image>${project.artifactId}</jib.docker.image>
         <jib.docker.tag>${project.version}</jib.docker.tag>
@@ -176,6 +177,15 @@
                             <exclude>javax.validation:validation-api</exclude>
                         </excludes>
                     </artifactSet>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>module-info.class</exclude>
+                                <exclude>META-INF/**</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
                 </configuration>
             </plugin>
             <plugin>
