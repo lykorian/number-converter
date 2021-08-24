@@ -169,6 +169,16 @@
                 </executions>
             </plugin>
             <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+                <configuration>
+                    <artifactSet>
+                        <excludes>
+                            <exclude>javax.validation:validation-api</exclude>
+                        </excludes>
+                    </artifactSet>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
                 <configuration>
