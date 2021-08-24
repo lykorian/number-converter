@@ -3,6 +3,12 @@
 Service for providing conversion of numeric values into alternative representations. Currently, Roman numeral
 representation is the only implemented conversion.
 
+## Roman Numeral Conversion Specification
+
+Conversion has been implemented according to the following specification:
+
+https://roman-numerals.info/
+
 ## Technologies
 
 - [Micronaut](https://micronaut.io/) (Full stack JVM-based framework)
@@ -12,37 +18,44 @@ representation is the only implemented conversion.
 - [Jib Maven Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) (For containerization
   during Maven build)
 - [Swagger](https://swagger.io/) (API documentation)
+- [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html) (Cloud deployment)
+
+https://numberconverter.lykorian.dev/romannumeral?query=1
+https://numberconverter.lykorian.dev/swagger-ui/index.html
+
+## Build and Run
+
+Execute the following Maven command to build, test, and run the app locally:
+
+`./mvnw mn:run`
+
+The built-in HTTP server runs on port 8080.  `/romannumeral` is the only implemented endpoint; however, additional
+endpoints are available for management and monitoring. See
+the [API documentation](https://numberconverter.lykorian.dev/swagger-ui/index.html) for complete details.
+
+## Deployment
+
+The Number Converter app is deployed to AWS Elastic Beanstalk by a Github Action triggered upon push to the `main`
+branch of the project GitHub repository.
+
+## How to Build and Deploy
 
 ## TODO
 
 - Refine conversion service
-- More tests - 100% coverage
 - AWS elastic beanstalk deployment - automate via GitHub actions?
-  - add arbitrary env-specific features?
+    - add arbitrary env-specific features?
 - Hosted SwaggerUI?
-
-## Roman Numeral Conversion
-
-- [Specification](https://roman-numerals.info/)
-
-## Getting Started
-
-## API
-
-http://localhost:8080/swagger-ui/index.html
+- Swagger for mgmt endpoints
 
 ## Tips
 
-- Find and reference a specification for Roman numerals online. Wikipedia is acceptable.
 - Provide clear and concise documentation:
     - README.md with:
         - How to build and run your project.
         - Your engineering and testing methodology.
         - Your packaging layout
         - Dependency attribution
-    - Inline documentation in your source code
-- Tests
-- Error Handling
 
 ## Framework Evaluation
 
@@ -55,18 +68,12 @@ advantages in the following areas:
 - Cloud-native
 - Built-in support for management tooling, building Docker images, and generating Swagger documentation
 
-Micronaut vs Spring Boot
-
-## Resources
-
 ## Micronaut 3.0.0 Documentation
 
 - [User Guide](https://docs.micronaut.io/3.0.0/guide/index.html)
 - [API Reference](https://docs.micronaut.io/3.0.0/api/index.html)
 - [Configuration Reference](https://docs.micronaut.io/3.0.0/guide/configurationreference.html)
 - [Micronaut Guides](https://guides.micronaut.io/index.html)
-
----
 
 ## Push To Docker Registry Workflow
 

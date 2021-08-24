@@ -23,11 +23,7 @@ public final class ConversionResponse {
      * @param input input query
      * @param output conversion result
      */
-    public ConversionResponse(
-        @NotNull
-        final Integer input,
-        @NotNull
-        final String output) {
+    public ConversionResponse(@NotNull final Integer input, @NotNull final String output) {
         this.input = input;
         this.output = output;
     }
@@ -37,7 +33,7 @@ public final class ConversionResponse {
      *
      * @return input value
      */
-    @Schema(description = "input value")
+    @Schema(description = "Input value")
     public String getInput() {
         return String.valueOf(input);
     }
@@ -47,7 +43,7 @@ public final class ConversionResponse {
      *
      * @return conversion result
      */
-    @Schema(description = "conversion result")
+    @Schema(description = "Conversion result")
     public String getOutput() {
         return output;
     }

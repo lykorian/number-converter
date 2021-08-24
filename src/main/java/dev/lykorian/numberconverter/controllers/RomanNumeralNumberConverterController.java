@@ -35,8 +35,7 @@ public class RomanNumeralNumberConverterController {
     private NumberConverter converter;
 
     /**
-     * Perform the conversion of an Integer to a Roman numeral given the annotated constraints.  Result will be
-     * serialized as JSON to the HTTP response.
+     * Perform the conversion of an Integer to a Roman numeral given the annotated constraints.
      *
      * @param query Integer value between 1 and 3999
      * @return JSON response containing input value and conversion result
