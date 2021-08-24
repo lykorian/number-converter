@@ -5,6 +5,8 @@
 Service for providing conversion of numeric values into alternative representations. Currently, Roman numeral
 representation is the only implemented conversion.
 
+![Maven Build](https://github.com/lykorian/number-converter/actions/workflows/maven-package.yml/badge.svg)
+
 ## TODO
 
 - Refine conversion service
