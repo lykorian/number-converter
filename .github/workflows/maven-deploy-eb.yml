@@ -29,5 +29,5 @@ jobs:
           environment_name: Numberconverter-env
           version_label: ${{ env.PROJECT_VERSION }}
           region: us-east-1
-          deployment_package: target/number-converter-${{ env.PROJECT_VERSION }}.jar
+          deployment_package: target/number-converter-${{ env.PROJECT_VERSION }}.zip
 
