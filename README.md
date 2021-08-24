@@ -8,9 +8,13 @@ representation is the only implemented conversion.
 ## TODO
 
 - Refine conversion service
-- AWS elastic beanstalk deployment - automate via GitHub actions?
-    - add arbitrary env-specific features?
 - Swagger for mgmt endpoints
+- AWS elastic beanstalk deployment
+    - add arbitrary env-specific features?
+- Documentation
+  - Packaging layout
+  - Engineering/testing methodology
+  - Dependency attribution
 
 ## Specification
 
@@ -47,15 +51,6 @@ the [API documentation](https://numberconverter.lykorian.dev/swagger-ui/index.ht
 The Number Converter app is deployed to AWS Elastic Beanstalk by a Github Action triggered upon push to the `main`
 branch of the project GitHub repository.
 
-## Tips
-
-- Provide clear and concise documentation:
-    - README.md with:
-        - How to build and run your project.
-        - Your engineering and testing methodology.
-        - Your packaging layout
-        - Dependency attribution
-
 ## Framework Evaluation
 
 Spring Boot and Micronaut were evaluated for implementing this application. Both were viable, but Micronaut had
@@ -66,13 +61,6 @@ advantages in the following areas:
 - Robust JUnit5 support
 - Cloud-native
 - Built-in support for management tooling, building Docker images, and generating Swagger documentation
-
-## Micronaut 3.0.0 Documentation
-
-- [User Guide](https://docs.micronaut.io/3.0.0/guide/index.html)
-- [API Reference](https://docs.micronaut.io/3.0.0/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/3.0.0/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
 
 ## Push To Docker Registry Workflow
 
