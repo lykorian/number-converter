@@ -1,4 +1,4 @@
-name: Package and Deploy to Elastic Beanstalk
+name: Deploy to Elastic Beanstalk
 
 on:
   workflow_dispatch:
@@ -27,7 +27,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: number-converter
           environment_name: Numberconverter-env
-          version_label: $PROJECT_VERSION
+          version_label: ${{ env.PROJECT_VERSION }}
           region: us-east-1
-          deployment_package: target/number-converter-$PROJECT_VERSION.jar
+          deployment_package: target/number-converter-${{ env.PROJECT_VERSION }}.jar
 
