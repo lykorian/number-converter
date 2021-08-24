@@ -16,7 +16,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Set Project Version
-        run: export PROJECT_VERSION=`echo mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive exec:exec`
+        run: echo "PROJECT_VERSION=$(echo mvn -q -Dexec.executable=\"echo\" -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_ENV
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Deploy to Elastic Beanstalk
@@ -26,7 +26,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: number-converter
           environment_name: Numberconverter-env
-          version_label: ${PROJECT_VERSION}
+          version_label: $PROJECT_VERSION
           region: us-east-1
-          deployment_package: target/number-converter-${PROJECT_VERSION}.jar
+          deployment_package: target/number-converter-$PROJECT_VERSION.jar
 
