@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.adobe.engineering.numberconverter</groupId>
+    <groupId>dev.lykorian.numberconverter</groupId>
     <artifactId>number-converter</artifactId>
     <name>Number Converter Service</name>
     <description>Service implementing Integer to Roman numeral conversion.</description>
@@ -26,7 +26,7 @@
         <jib.docker.repository>lykorian</jib.docker.repository>
         <jib.docker.image>${project.artifactId}</jib.docker.image>
         <jib.docker.tag>${project.version}</jib.docker.tag>
-        <exec.mainClass>com.adobe.engineering.numberconverter.Application</exec.mainClass>
+        <exec.mainClass>dev.lykorian.numberconverter.Application</exec.mainClass>
         <micronaut.runtime>netty</micronaut.runtime>
         <logback.test.appender>ch.qos.logback.core.helpers.NOPAppender</logback.test.appender>
     </properties>
@@ -138,7 +138,7 @@
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
-                        <arg>-Amicronaut.processing.group=com.adobe.engineering.numberconverter</arg>
+                        <arg>-Amicronaut.processing.group=dev.lykorian.numberconverter</arg>
                         <arg>-Amicronaut.processing.module=number-converter</arg>
                         <arg>-J-Dmicronaut.openapi.views.spec=swagger-ui.enabled=true</arg>
                     </compilerArgs>
@@ -148,6 +148,11 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.7</version>
+                <configuration>
+                    <excludes>
+                        <exclude>dev/lykorian/numberconverter/Application.class</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>

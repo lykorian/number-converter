@@ -1,4 +1,4 @@
-package com.adobe.engineering.numberconverter.services;
+package dev.lykorian.numberconverter.services;
 
 /**
  * Service definition for number converters that accept an input number and convert to an alternative representation.

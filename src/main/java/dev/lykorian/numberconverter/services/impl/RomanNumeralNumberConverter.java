@@ -1,6 +1,6 @@
-package com.adobe.engineering.numberconverter.services.impl;
+package dev.lykorian.numberconverter.services.impl;
 
-import com.adobe.engineering.numberconverter.services.NumberConverter;
+import dev.lykorian.numberconverter.services.NumberConverter;
 import com.google.common.collect.ImmutableMap;
 import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.annotation.Timed;

@@ -1,6 +1,6 @@
-package com.adobe.engineering.numberconverter.controllers;
+package dev.lykorian.numberconverter.controllers;
 
-import com.adobe.engineering.numberconverter.models.ConversionResponse;
+import dev.lykorian.numberconverter.models.ConversionResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;

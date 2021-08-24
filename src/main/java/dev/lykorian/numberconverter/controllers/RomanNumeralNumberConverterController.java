@@ -1,7 +1,7 @@
-package com.adobe.engineering.numberconverter.controllers;
+package dev.lykorian.numberconverter.controllers;
 
-import com.adobe.engineering.numberconverter.models.ConversionResponse;
-import com.adobe.engineering.numberconverter.services.NumberConverter;
+import dev.lykorian.numberconverter.models.ConversionResponse;
+import dev.lykorian.numberconverter.services.NumberConverter;
 import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.annotation.Timed;
 import io.micronaut.http.HttpResponse;

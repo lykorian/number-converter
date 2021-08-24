@@ -1,4 +1,4 @@
-package com.adobe.engineering.numberconverter;
+package dev.lykorian.numberconverter;
 
 import io.micronaut.runtime.Micronaut;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;

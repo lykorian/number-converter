@@ -1,4 +1,4 @@
-package com.adobe.engineering.numberconverter.models;
+package dev.lykorian.numberconverter.models;
 
 import com.google.common.base.MoreObjects;
 import io.micronaut.core.annotation.Introspected;

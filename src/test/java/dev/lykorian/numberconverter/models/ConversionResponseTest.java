@@ -1,4 +1,4 @@
-package com.adobe.engineering.numberconverter.models;
+package dev.lykorian.numberconverter.models;
 
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.params.ParameterizedTest;
