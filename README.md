@@ -4,10 +4,10 @@ Service for providing conversion of numeric values into alternative representati
 representation is the only implemented conversion.
 
 ![Maven Build](https://github.com/lykorian/number-converter/actions/workflows/maven-package.yml/badge.svg)
+[![codecov](https://codecov.io/gh/lykorian/number-converter/branch/develop/graph/badge.svg?token=NPYB3HHIW6)](https://codecov.io/gh/lykorian/number-converter)
 
 ## TODO
 
-- Refine conversion service
 - Swagger for mgmt endpoints
 - AWS elastic beanstalk deployment
     - add arbitrary env-specific features?

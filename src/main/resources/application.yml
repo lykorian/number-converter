@@ -19,3 +19,7 @@ endpoints:
     enabled: true
   loggers:
     enabled: true
+  refresh:
+    enabled: false
+  threaddump:
+    enabled: false

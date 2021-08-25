@@ -4,6 +4,7 @@ import io.micronaut.runtime.Micronaut;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
  * Application class responsible for running the Number Converter Service.
@@ -15,7 +16,11 @@ import io.swagger.v3.oas.annotations.info.Info;
             name = "Mark Daugherty",
             email = "mark.r.daugherty@gmail.com"
         )
-    )
+    ),
+    tags = {
+        @Tag(name = "number-converter"),
+        @Tag(name = "management")
+    }
 )
 public class Application {
 
