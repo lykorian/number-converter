@@ -1,7 +1,5 @@
 # Number Converter
 
-[Mark Daugherty](mailto:mark.r.daugherty@gmail.com)
-
 Service for providing conversion of numeric values into alternative representations. Currently, Roman numeral
 representation is the only implemented conversion.
 
@@ -63,6 +61,22 @@ advantages in the following areas:
 - Robust JUnit5 support
 - Cloud-native
 - Built-in support for management tooling, building Docker images, and generating Swagger documentation
+
+## Implementation Notes
+
+### Controllers
+
+### Services
+
+### Validation
+
+### Error Handling
+
+### Logging
+
+### Monitoring
+
+
 
 ## Push To Docker Registry Workflow
 
