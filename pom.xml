@@ -137,6 +137,11 @@
                             <artifactId>micronaut-openapi</artifactId>
                             <version>3.0.1</version>
                         </path>
+                        <path>
+                            <groupId>io.micronaut</groupId>
+                            <artifactId>micronaut-management</artifactId>
+                            <version>${micronaut.version}</version>
+                        </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
                         <arg>-Amicronaut.processing.group=dev.lykorian.numberconverter</arg>
