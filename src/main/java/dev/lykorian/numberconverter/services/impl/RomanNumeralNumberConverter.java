@@ -27,7 +27,7 @@ public class RomanNumeralNumberConverter implements NumberConverter {
     private static final Logger LOG = LoggerFactory.getLogger(RomanNumeralNumberConverter.class);
 
     /**
-     * Map of thousandths place digits and their corresponding Roman numeral representations.
+     * Map of thousands place digits and their corresponding Roman numeral representations.
      */
     private static final Map<Integer, String> THOUSANDS = ImmutableMap.of(
         1, "M",
@@ -36,7 +36,7 @@ public class RomanNumeralNumberConverter implements NumberConverter {
     );
 
     /**
-     * Map of hundredths place digits and their corresponding Roman numeral representations.
+     * Map of hundreds place digits and their corresponding Roman numeral representations.
      */
     private static final Map<Integer, String> HUNDREDS = new ImmutableMap.Builder<Integer, String>()
         .put(1, "C")
@@ -80,7 +80,10 @@ public class RomanNumeralNumberConverter implements NumberConverter {
         .put(9, "IX")
         .build();
 
-    private static final Map<Integer, Map<Integer, String>> INDEX_MAP = ImmutableMap.of(
+    /**
+     * Map of place values to conversion maps.
+     */
+    private static final Map<Integer, Map<Integer, String>> PLACE_VALUE_CONVERSION_MAP = ImmutableMap.of(
         1, ONES,
         2, TENS,
         3, HUNDREDS,
@@ -124,7 +127,7 @@ public class RomanNumeralNumberConverter implements NumberConverter {
         if (value == null) {
             result = "";
         } else {
-            final Map<Integer, String> conversionMap = INDEX_MAP.get(value.length());
+            final Map<Integer, String> conversionMap = PLACE_VALUE_CONVERSION_MAP.get(value.length());
 
             result = getConvertedValue(conversionMap, value) + convertValue(removeDigit(value));
         }
