@@ -1,15 +1,15 @@
 # Number Converter
 
-[Mark Daugherty](mailto:mark.r.daugherty@gmail.com)
-
 Service for providing conversion of numeric values into alternative representations. Currently, Roman numeral
 representation is the only implemented conversion.
 
 ![Maven Build](https://github.com/lykorian/number-converter/actions/workflows/maven-package.yml/badge.svg)
+[![codecov](https://codecov.io/gh/lykorian/number-converter/branch/develop/graph/badge.svg?token=NPYB3HHIW6)](https://codecov.io/gh/lykorian/number-converter)
 
 ## TODO
 
-- Refine conversion service
+- Codecov token bafd8419-1b47-4189-a8e5-ce401e2dc3ba
+- CODECOV_TOKEN='bafd8419-1b47-4189-a8e5-ce401e2dc3ba'
 - Swagger for mgmt endpoints
 - AWS elastic beanstalk deployment
     - add arbitrary env-specific features?
