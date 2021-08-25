@@ -8,8 +8,6 @@ representation is the only implemented conversion.
 
 ## TODO
 
-- Codecov token bafd8419-1b47-4189-a8e5-ce401e2dc3ba
-- CODECOV_TOKEN='bafd8419-1b47-4189-a8e5-ce401e2dc3ba'
 - Swagger for mgmt endpoints
 - AWS elastic beanstalk deployment
     - add arbitrary env-specific features?
