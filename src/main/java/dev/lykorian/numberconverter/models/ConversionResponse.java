@@ -4,13 +4,14 @@ import com.google.common.base.MoreObjects;
 import io.micronaut.core.annotation.Introspected;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.NotNull;
+import javax.annotation.concurrent.Immutable;
 
 /**
  * Represents the service response for a number conversion to be serialized as JSON.
  */
 @Schema(description = "Service response for a number conversion.")
 @Introspected
+@Immutable
 public final class ConversionResponse {
 
     private final Integer input;
@@ -23,7 +24,7 @@ public final class ConversionResponse {
      * @param input input query
      * @param output conversion result
      */
-    public ConversionResponse(@NotNull final Integer input, @NotNull final String output) {
+    public ConversionResponse(final Integer input, final String output) {
         this.input = input;
         this.output = output;
     }

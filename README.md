@@ -1,27 +1,25 @@
 # Number Converter
 
-Service for providing conversion of numeric values into alternative representations. Currently, Roman numeral
+[numberconverter.lykorian.dev](https://numberconverter.lykorian.dev)
+
+Microservice providing conversion of numeric values into alternative representations. Currently, Roman numeral
 representation is the only implemented conversion.
 
-## Roman Numeral Conversion Specification
+![Maven Build](https://github.com/lykorian/number-converter/actions/workflows/maven-package.yml/badge.svg)
+[![codecov](https://codecov.io/gh/lykorian/number-converter/branch/develop/graph/badge.svg?token=NPYB3HHIW6)](https://codecov.io/gh/lykorian/number-converter)
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 
-Conversion has been implemented according to the following specification:
+## Overview
+
+Number Converter is a microservice providing conversion of numeric values into Roman Numerals implemented
+with [Micronaut](https://micronaut.io/) and deployed
+to [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html).
+
+### Specification
+
+Roman numeral conversion has been implemented according to the following specification:
 
 https://roman-numerals.info/
-
-## Technologies
-
-- [Micronaut](https://micronaut.io/) (Full stack JVM-based framework)
-- [Logback](http://logback.qos.ch/) (Application logging)
-- [Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/) (Metrics - currently implemented
-  in-memory only)
-- [Jib Maven Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) (For containerization
-  during Maven build)
-- [Swagger](https://swagger.io/) (API documentation)
-- [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html) (Cloud deployment)
-
-https://numberconverter.lykorian.dev/romannumeral?query=1
-https://numberconverter.lykorian.dev/swagger-ui/index.html
 
 ## Build and Run
 
@@ -29,92 +27,122 @@ Execute the following Maven command to build, test, and run the app locally:
 
 `./mvnw mn:run`
 
-The built-in HTTP server runs on port 8080.  `/romannumeral` is the only implemented endpoint; however, additional
-endpoints are available for management and monitoring. See
-the [API documentation](https://numberconverter.lykorian.dev/swagger-ui/index.html) for complete details.
+The built-in HTTP server runs on port `8080`.  `/romannumeral` is the only implemented endpoint; however, additional
+endpoints are available for management and monitoring. See the [API documentation](https://numberconverter.lykorian.dev)
+for complete details.
 
-## Deployment
+## Deployment Workflows
 
-The Number Converter app is deployed to AWS Elastic Beanstalk by a Github Action triggered upon push to the `main`
-branch of the project GitHub repository.
+### AWS Elastic Beanstalk
 
-## How to Build and Deploy
+[`.github/workflows/maven-deploy-eb.yml`](.github/workflows/maven-deploy-eb.yml)
 
-## TODO
+Maven build and deploy to AWS Elastic Beanstalk for pushes to the `main` branch.
 
-- Refine conversion service
-- AWS elastic beanstalk deployment - automate via GitHub actions?
-    - add arbitrary env-specific features?
-- Hosted SwaggerUI?
-- Swagger for mgmt endpoints
+### Docker
 
-## Tips
+[`.github/workflows/maven-deploy-docker.yml`](.github/workflows/maven-deploy-docker.yml)
 
-- Provide clear and concise documentation:
-    - README.md with:
-        - How to build and run your project.
-        - Your engineering and testing methodology.
-        - Your packaging layout
-        - Dependency attribution
+Maven build, create Docker image, and push image to GitHub Container registry for pushes to the `main` branch.
 
-## Framework Evaluation
+## Application Architecture
+
+### Framework Evaluation
 
 Spring Boot and Micronaut were evaluated for implementing this application. Both were viable, but Micronaut had
 advantages in the following areas:
 
 - Minimal required configuration
 - Faster startup time
-- Robust JUnit5 support
+- Robust JUnit support
 - Cloud-native
 - Built-in support for management tooling, building Docker images, and generating Swagger documentation
 
-## Micronaut 3.0.0 Documentation
+### Packaging
 
-- [User Guide](https://docs.micronaut.io/3.0.0/guide/index.html)
-- [API Reference](https://docs.micronaut.io/3.0.0/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/3.0.0/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
+The app uses Maven to build, test, and package a runnable JAR file. Project resources are structured as follows:
 
-## Push To Docker Registry Workflow
+| Resource(s)  | Description |
+| ------------- | ------------- |
+| `.github/workflows` | GitHub Action configurations supporting build, test, and deployment tasks |
+| `.mvn/wrapper` | Maven wrapper for build portability |
+| `micronaut-cli.yml` | Micronaut CLI configuration |
+| `mvnw` | Maven wrapper executable |
+| `openapi.properties` | Swagger API configuration |
+| `pom.xml` | Maven build configuration |
+| `src/main/assembly/zip.xml` | Assembly plugin descriptor |
+| `src/main/java` | Java sources |
+| `src/main/resources/application.yml` | Micronaut app configuration |
+| `src/main/resources/logback.xml` | Logging configuration |
+| `src/test/java` | Java test sources |
+| `src/test/resources/conversion.csv` | Unit and Load test data |
+| `src/test/resources/load-test-script.yml` | Artillery load test configuration |
+| `src/test/resources/logback-test.xml` | Test logging configuration |
 
-Workflow file: [`.github/workflows/maven.yml`](.github/workflows/maven.yml)
+### Controllers
 
-### Workflow description
+The [Roman Numeral Number Converter Controller](src/main/java/dev/lykorian/numberconverter/controllers/RomanNumeralNumberConverterController.java)
+is responsible for handling requests to the `/romannumeral` endpoint, validating inputs, and returning JSON responses to
+the client with the conversion result. Conversion logic is delegated to services.
 
-For pushes to the `main` branch, the workflow will:
+#### Error Handling
 
-1. Setup the build environment with respect to the selected java/graalvm version.
-2. Login to docker registry based on provided configuration.
-3. Build, tag and push Docker image with Micronaut application to the Docker container image.
+Missing or invalid inputs will return a `400` response code with a JSON object containing the error message details.
+See [Swagger](https://numberconverter.lykorian.dev/#/number-converter/convert) for details.
 
-### Dependencies on other GitHub Actions
+### Services
 
-- [Docker login](`https://github.com/docker/login-action`)(`docker/login`)
-- [Setup GraalVM](`https://github.com/DeLaGuardo/setup-graalvm`)(`DeLaGuardo/setup-graalvm`)
+The service layer of the application implements number conversion logic. Decoupling of the controller from underlying
+implementation allows for services to be consumed in other contexts to better support extensibility of the app.
 
-### Setup
+### Validation
 
-Add the following GitHub secrets:
+Inputs are validated at both the controller and service layers. The secondary service validation is intended to ensure
+valid inputs regardless of source (e.g. event handlers or other services) while delegating context-appropriate messaging
+to the client (in this case, the Roman Numeral controller).
 
-| Name | Description |
-| ---- | ----------- |
-| DOCKER_USERNAME | Username for Docker registry authentication. |
-| DOCKER_PASSWORD | Docker registry password. |
-| DOCKER_REPOSITORY_PATH | Path to the docker image repository inside the registry, e.g. for the image `foo/bar/micronaut:0.1` it is `foo/bar`. |
-| DOCKER_REGISTRY_URL | Docker registry url. |
+### Unit Tests
 
-#### Configuration examples
+Unit tests are implemented in [JUnit](https://junit.org/junit5/docs/current/user-guide/) using Micronaut's
+built-in [test extension](https://micronaut-projects.github.io/micronaut-test/latest/guide/) and executed in the test
+phase of the Maven build. Test coverage is evaluated using
+the [JaCoCo Maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html) and uploaded
+to [Codecov](https://app.codecov.io/gh/lykorian/number-converter) by
+the [Maven Package](https://github.com/lykorian/number-converter/actions/workflows/maven-package.yml) GitHub action,
+which is triggered by pushes to the `develop` branch and when Pull Requests are opened.
 
-Specifics on how to configure public cloud docker registries like DockerHub, Google Container Registry (GCR), AWS
-Container Registry (ECR), Oracle Cloud Infrastructure Registry (OCIR) and many more can be found
-in [docker/login-action](https://github.com/docker/login-action)
-documentation.
+See [Codecov](https://app.codecov.io/gh/lykorian/number-converter) for current coverage details.
 
-#### DockerHub
+### Load Tests
 
-- `DOCKER_USERNAME` - DockerHub username
-- `DOCKER_PASSWORD` - DockerHub password or personal access token
-- `DOCKER_REPOSITORY_PATH` - DockerHub organization or the username in case of personal registry
-- `DOCKER_REGISTRY_URL` - No need to configure for DockerHub
+Load tests are manually dispatched by
+the [Load Test](https://github.com/lykorian/number-converter/actions/workflows/load-test.yml) GitHub Action. Tests are
+executed by [Artillery](https://artillery.io/) using the test script [`load-test-script.yml`](src/test/resources/load-test-script.yml). Results
+are output to the **Artillery Load Test** Job log.
 
-> See [docker/login-action for GCR](https://github.com/docker/login-action#dockerhub)
+Since there is only a single deployed environment, load tests are executed directly against this target as opposed to a
+Development or Staging server.
+
+The load test script and unit tests share the same input values
+from [`conversions.csv`](src/test/resources/conversions.csv)
+
+### Management
+
+Monitoring and management are interfaced with [Micrometer](https://micrometer.io/). Endpoints are detailed
+in [Swagger](https://numberconverter.lykorian.dev/#/management). Metrics are currently in-memory only using
+Micrometer's `SimpleMeterRegistry`.
+
+## Resources
+
+- [Micronaut](https://micronaut.io/)
+- [Logback](http://logback.qos.ch/)
+- [Guava](https://guava.dev/)
+- [Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/)
+- [Jib Maven Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)
+- [Swagger](https://swagger.io/)
+- [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html)
+- [Artillery](https://artillery.io/)
+
+## Versioning
+
+Follows [Semantic Versioning](http://semver.org/) guidelines.

@@ -8,6 +8,7 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.slf4j.Logger;
@@ -44,17 +45,16 @@ public class RomanNumeralNumberConverterController {
     @Timed(extraTags = { "controller", "romanNumeral" })
     @Counted(extraTags = { "controller", "romanNumeral" })
     @ApiResponse(responseCode = "400", description = "Invalid query value")
+    @Tag(name = "number-converter")
     public HttpResponse<ConversionResponse> convert(
         @Min(value = 1, message = "Number must be 1 or greater.")
         @Max(value = 3999, message = "Number must be 3999 or less.")
         final Integer query) {
         LOG.debug("converting query value : {}", query);
 
-        final String output = converter.convert(query);
+        final ConversionResponse conversionResponse = new ConversionResponse(query, converter.convert(query));
 
-        final ConversionResponse conversionResponse = new ConversionResponse(query, output);
-
-        LOG.debug("returning conversion response : {}", conversionResponse);
+        LOG.info("returning conversion response : {}", conversionResponse);
 
         return HttpResponse.ok(conversionResponse);
     }

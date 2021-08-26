@@ -7,7 +7,7 @@
     <artifactId>number-converter</artifactId>
     <name>Number Converter Service</name>
     <description>Service implementing Integer to Roman numeral conversion.</description>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>${packaging}</packaging>
 
     <url>https://github.com/lykorian/number-converter</url>
@@ -29,7 +29,10 @@
         <jib.docker.tag>${project.version}</jib.docker.tag>
         <exec.mainClass>dev.lykorian.numberconverter.Application</exec.mainClass>
         <micronaut.runtime>netty</micronaut.runtime>
-        <logback.test.appender>ch.qos.logback.core.helpers.NOPAppender</logback.test.appender>
+
+        <!-- logback log levels -->
+        <log.level.root>info</log.level.root>
+        <log.level.numberconverter>info</log.level.numberconverter>
     </properties>
 
     <dependencies>
@@ -112,6 +115,12 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>io.micronaut.build</groupId>
@@ -136,6 +145,11 @@
                             <groupId>io.micronaut.openapi</groupId>
                             <artifactId>micronaut-openapi</artifactId>
                             <version>3.0.1</version>
+                        </path>
+                        <path>
+                            <groupId>io.micronaut</groupId>
+                            <artifactId>micronaut-management</artifactId>
+                            <version>${micronaut.version}</version>
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
@@ -168,25 +182,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-shade-plugin</artifactId>
-                <configuration>
-                    <artifactSet>
-                        <excludes>
-                            <exclude>javax.validation:validation-api</exclude>
-                        </excludes>
-                    </artifactSet>
-                    <filters>
-                        <filter>
-                            <artifact>*:*</artifact>
-                            <excludes>
-                                <exclude>module-info.class</exclude>
-                                <exclude>META-INF/**</exclude>
-                            </excludes>
-                        </filter>
-                    </filters>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>

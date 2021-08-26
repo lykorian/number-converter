@@ -1,0 +1,18 @@
+config:
+  target: https://numberconverter.lykorian.dev
+  phases:
+    - duration: 60
+      arrivalRate: 10
+      maxVusers: 100
+  payload:
+    path: "conversions.csv"
+    fields:
+      - "query"
+
+scenarios:
+  - name: Roman Numeral Converter
+    flow:
+      - get:
+          url: /romannumeral
+          qs:
+            query: "{{ query }}"
