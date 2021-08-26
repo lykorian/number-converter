@@ -29,7 +29,10 @@
         <jib.docker.tag>${project.version}</jib.docker.tag>
         <exec.mainClass>dev.lykorian.numberconverter.Application</exec.mainClass>
         <micronaut.runtime>netty</micronaut.runtime>
-        <logback.test.appender>ch.qos.logback.core.helpers.NOPAppender</logback.test.appender>
+
+        <!-- logback log levels -->
+        <log.level.root>info</log.level.root>
+        <log.level.numberconverter>info</log.level.numberconverter>
     </properties>
 
     <dependencies>
@@ -112,6 +115,12 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>io.micronaut.build</groupId>
