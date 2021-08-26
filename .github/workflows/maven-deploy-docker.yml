@@ -6,7 +6,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-push-image:
+  build-and-deploy:
+    name: Maven Build and Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

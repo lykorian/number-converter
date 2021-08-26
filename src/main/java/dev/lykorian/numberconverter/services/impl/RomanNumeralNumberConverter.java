@@ -108,9 +108,11 @@ public class RomanNumeralNumberConverter implements NumberConverter {
         @Min(1)
         @Max(3999)
         final Integer value) {
+        LOG.debug("input value : {}", value);
+
         final String result = convertValue(String.valueOf(value));
 
-        LOG.info("input value : {}, roman numeral : {}", value, result);
+        LOG.debug("returning roman numeral : {}", result);
 
         return result;
     }

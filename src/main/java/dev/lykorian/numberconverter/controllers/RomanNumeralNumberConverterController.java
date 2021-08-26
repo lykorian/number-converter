@@ -54,7 +54,7 @@ public class RomanNumeralNumberConverterController {
 
         final ConversionResponse conversionResponse = new ConversionResponse(query, converter.convert(query));
 
-        LOG.debug("returning conversion response : {}", conversionResponse);
+        LOG.info("returning conversion response : {}", conversionResponse);
 
         return HttpResponse.ok(conversionResponse);
     }
