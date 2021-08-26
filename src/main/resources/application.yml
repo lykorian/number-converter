@@ -8,7 +8,7 @@ micronaut:
         mapping: /swagger/**
       swagger-ui:
         paths: classpath:META-INF/swagger/views/swagger-ui
-        mapping: /swagger-ui/**
+        mapping: /**
 
 endpoints:
   all:

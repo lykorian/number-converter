@@ -52,9 +52,7 @@ public class RomanNumeralNumberConverterController {
         final Integer query) {
         LOG.debug("converting query value : {}", query);
 
-        final String output = converter.convert(query);
-
-        final ConversionResponse conversionResponse = new ConversionResponse(query, output);
+        final ConversionResponse conversionResponse = new ConversionResponse(query, converter.convert(query));
 
         LOG.debug("returning conversion response : {}", conversionResponse);
 
