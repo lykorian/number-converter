@@ -7,7 +7,7 @@
     <artifactId>number-converter</artifactId>
     <name>Number Converter Service</name>
     <description>Service implementing Integer to Roman numeral conversion.</description>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>${packaging}</packaging>
 
     <url>https://github.com/lykorian/number-converter</url>
@@ -34,6 +34,35 @@
         <log.level.root>info</log.level.root>
         <log.level.numberconverter>info</log.level.numberconverter>
     </properties>
+
+    <profiles>
+        <!-- activate profile to generate zip file for upload to AWS -->
+        <profile>
+            <id>zip</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                                <configuration>
+                                    <appendAssemblyId>false</appendAssemblyId>
+                                    <descriptors>
+                                        <descriptor>src/main/assembly/zip.xml</descriptor>
+                                    </descriptors>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <dependencies>
         <!-- compile -->
@@ -180,24 +209,6 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <descriptors>
-                                <descriptor>src/main/assembly/zip.xml</descriptor>
-                            </descriptors>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
