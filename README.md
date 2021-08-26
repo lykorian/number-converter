@@ -141,6 +141,7 @@ Micrometer's `SimpleMeterRegistry`.
 - [Jib Maven Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)
 - [Swagger](https://swagger.io/)
 - [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html)
+- [Artillery](https://artillery.io/)
 
 ## Versioning
 
