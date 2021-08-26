@@ -7,7 +7,7 @@
     <artifactId>number-converter</artifactId>
     <name>Number Converter Service</name>
     <description>Service implementing Integer to Roman numeral conversion.</description>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>${packaging}</packaging>
 
     <url>https://github.com/lykorian/number-converter</url>
