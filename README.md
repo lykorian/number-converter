@@ -62,6 +62,22 @@ advantages in the following areas:
 - Cloud-native
 - Built-in support for management tooling, building Docker images, and generating Swagger documentation
 
+## Implementation Notes
+
+### Controllers
+
+### Services
+
+### Validation
+
+### Error Handling
+
+### Logging
+
+### Monitoring
+
+
+
 ## Push To Docker Registry Workflow
 
 Workflow file: [`.github/workflows/maven.yml`](.github/workflows/maven.yml)
