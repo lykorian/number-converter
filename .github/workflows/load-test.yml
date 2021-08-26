@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@master
       - uses: kenju/github-actions-artillery@master
         with:
-          filepath: src/test/resources/load-test.yml
+          filepath: src/test/resources/load-test-script.yml
