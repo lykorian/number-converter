@@ -35,13 +35,13 @@ for complete details.
 
 Maven build, test, package, and upload code coverage to [Codecov](https://app.codecov.io/gh/lykorian/number-converter) for pushes to the `develop` branch.  Ensures that new commits build successfully and maintain 100% code coverage.
 
-### AWS Elastic Beanstalk
+### AWS Elastic Beanstalk Deploy
 
-[`.github/workflows/maven-deploy-eb.yml`](.github/workflows/maven-deploy-eb.yml)
+[`.github/workflows/maven-deploy-eb.yml`](.github/workflows/maven-deploy-eb.yml)    
 
 Maven build and deploy to AWS Elastic Beanstalk for pushes to the `main` branch.
 
-### Docker
+### Docker Deploy
 
 [`.github/workflows/maven-deploy-docker.yml`](.github/workflows/maven-deploy-docker.yml)
 
