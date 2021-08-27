@@ -10,6 +10,11 @@ micronaut:
         paths: classpath:META-INF/swagger/views/swagger-ui
         mapping: /**
 
+ehcache:
+  caches:
+    roman-numeral-number-converter:
+      enabled: true
+
 endpoints:
   all:
     sensitive: false
@@ -23,3 +28,6 @@ endpoints:
     enabled: false
   threaddump:
     enabled: false
+  caches:
+    enabled: true
+    sensitive: false

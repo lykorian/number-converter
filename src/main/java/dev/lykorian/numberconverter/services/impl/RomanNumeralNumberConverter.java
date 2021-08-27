@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import dev.lykorian.numberconverter.services.NumberConverter;
 import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.annotation.Timed;
+import io.micronaut.cache.annotation.Cacheable;
 import io.micronaut.core.annotation.NonNull;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
@@ -103,6 +104,7 @@ public class RomanNumeralNumberConverter implements NumberConverter {
     @NonNull
     @Timed(extraTags = { "service", "romanNumeral" })
     @Counted(extraTags = { "service", "romanNumeral" })
+    @Cacheable("roman-numeral-number-converter")
     public String convert(
         @NonNull
         @Min(1)
