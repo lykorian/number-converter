@@ -27,7 +27,13 @@ The built-in HTTP server runs on port `8080`.  `/romannumeral` is the only imple
 endpoints are available for management and monitoring. See the [API documentation](https://numberconverter.lykorian.dev)
 for complete details.
 
-## Deployment Workflows
+## GitHub Actions
+
+### Maven Package
+
+[`.github/workflows/maven-package.yml`](.github/workflows/maven-package.yml)
+
+Maven build, test, package, and upload code coverage to [Codecov](https://app.codecov.io/gh/lykorian/number-converter) for pushes to the `develop` branch.  Ensures that new commits build successfully and maintain 100% code coverage.
 
 ### AWS Elastic Beanstalk
 
@@ -138,12 +144,14 @@ Micrometer's `SimpleMeterRegistry`.
 ## Resources
 
 - [Micronaut](https://micronaut.io/)
-- [Logback](http://logback.qos.ch/)
-- [Guava](https://guava.dev/)
 - [Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/)
 - [Jib Maven Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)
 - [Swagger](https://swagger.io/)
 - [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html)
+- [Logback](http://logback.qos.ch/)
+- [Guava](https://guava.dev/)
+- [JaCoCo](https://www.eclemma.org/jacoco/)
+- [Codecov](https://app.codecov.io/gh/lykorian/number-converter)
 - [Artillery](https://artillery.io/)
 
 ## Versioning
