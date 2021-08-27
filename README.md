@@ -95,6 +95,10 @@ See [Swagger](https://numberconverter.lykorian.dev/#/number-converter/convert) f
 The service layer of the application implements number conversion logic. Decoupling of the controller from underlying
 implementation allows for services to be consumed in other contexts to better support extensibility of the app.
 
+#### Caching
+
+Roman numeral conversions are cached at the service layer using Micronaut's [Ehcache](https://micronaut-projects.github.io/micronaut-cache/latest/guide/index.html#ehcache) implementation.
+
 ### Validation
 
 Inputs are validated at both the controller and service layers. The secondary service validation is intended to ensure

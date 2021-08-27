@@ -32,11 +32,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build And Push Docker Image
+      - name: Build and Push Docker Image
         env:
           DOCKER_REPOSITORY_PATH: ${{ secrets.DOCKER_REPOSITORY_PATH }}
           DOCKER_REGISTRY_URL: ${{ secrets.DOCKER_REGISTRY_URL }}
           TESTCONTAINERS_RYUK_DISABLED: true
         run: |
-          export DOCKER_IMAGE=`echo "${DOCKER_REPOSITORY_PATH}/number-converter" | sed -e 's#//#/#' -e 's#^/##'`
+          export DOCKER_IMAGE=`echo "number-converter" | sed -e 's#//#/#' -e 's#^/##'`
           ./mvnw deploy -Dpackaging=docker -Djib.docker.image=$DOCKER_IMAGE --no-transfer-progress

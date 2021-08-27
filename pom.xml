@@ -7,7 +7,7 @@
     <artifactId>number-converter</artifactId>
     <name>Number Converter Service</name>
     <description>Service implementing Integer to Roman numeral conversion.</description>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
     <packaging>${packaging}</packaging>
 
     <url>https://github.com/lykorian/number-converter</url>
@@ -87,12 +87,25 @@
             <artifactId>micronaut-management</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.micronaut.cache</groupId>
+            <artifactId>micronaut-cache-management</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>io.micronaut.micrometer</groupId>
             <artifactId>micronaut-micrometer-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.cache</groupId>
+            <artifactId>micronaut-cache-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.cache</groupId>
+            <artifactId>micronaut-cache-ehcache</artifactId>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>

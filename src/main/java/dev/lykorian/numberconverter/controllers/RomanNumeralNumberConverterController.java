@@ -5,8 +5,12 @@ import dev.lykorian.numberconverter.services.NumberConverter;
 import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.annotation.Timed;
 import io.micronaut.http.HttpResponse;
+import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.http.hateoas.VndError;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.inject.Inject;
@@ -44,7 +48,14 @@ public class RomanNumeralNumberConverterController {
     @Get
     @Timed(extraTags = { "controller", "romanNumeral" })
     @Counted(extraTags = { "controller", "romanNumeral" })
-    @ApiResponse(responseCode = "400", description = "Invalid query value")
+    @ApiResponse(
+        responseCode = "400",
+        description = "Invalid query value",
+        content = @Content(
+            mediaType = MediaType.APPLICATION_JSON,
+            schema = @Schema(implementation = VndError.class)
+        )
+    )
     @Tag(name = "number-converter")
     public HttpResponse<ConversionResponse> convert(
         @Min(value = 1, message = "Number must be 1 or greater.")
