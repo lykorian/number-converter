@@ -2,20 +2,16 @@
 
 [numberconverter.lykorian.dev](https://numberconverter.lykorian.dev)
 
-Microservice providing conversion of numeric values into alternative representations. Currently, Roman numeral
+Microservice providing conversion of numeric values into alternative representations implemented
+with [Micronaut](https://micronaut.io/) and deployed
+to [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html). Currently, Roman numeral
 representation is the only implemented conversion.
 
 ![Maven Build](https://github.com/lykorian/number-converter/actions/workflows/maven-package.yml/badge.svg)
 [![codecov](https://codecov.io/gh/lykorian/number-converter/branch/develop/graph/badge.svg?token=NPYB3HHIW6)](https://codecov.io/gh/lykorian/number-converter)
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 
-## Overview
-
-Number Converter is a microservice providing conversion of numeric values into Roman Numerals implemented
-with [Micronaut](https://micronaut.io/) and deployed
-to [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elastic-beanstalk/index.html).
-
-### Specification
+## Specification
 
 Roman numeral conversion has been implemented according to the following specification:
 
@@ -88,7 +84,7 @@ the client with the conversion result. Conversion logic is delegated to services
 #### Error Handling
 
 Missing or invalid inputs will return a `400` response code with a JSON object containing the error message details.
-See [Swagger](https://numberconverter.lykorian.dev/#/number-converter/convert) for details.
+See [API documentation](https://numberconverter.lykorian.dev/#/number-converter/convert) for details.
 
 ### Services
 
@@ -97,7 +93,9 @@ implementation allows for services to be consumed in other contexts to better su
 
 #### Caching
 
-Roman numeral conversions are cached at the service layer using Micronaut's [Ehcache](https://micronaut-projects.github.io/micronaut-cache/latest/guide/index.html#ehcache) implementation.
+Roman numeral conversions are cached at the service layer using
+Micronaut's [Ehcache](https://micronaut-projects.github.io/micronaut-cache/latest/guide/index.html#ehcache)
+implementation.
 
 ### Validation
 
@@ -121,8 +119,9 @@ See [Codecov](https://app.codecov.io/gh/lykorian/number-converter) for current c
 
 Load tests are manually dispatched by
 the [Load Test](https://github.com/lykorian/number-converter/actions/workflows/load-test.yml) GitHub Action. Tests are
-executed by [Artillery](https://artillery.io/) using the test script [`load-test-script.yml`](src/test/resources/load-test-script.yml). Results
-are output to the **Artillery Load Test** Job log.
+executed by [Artillery](https://artillery.io/) using the test
+script [`load-test-script.yml`](src/test/resources/load-test-script.yml). Results are output to the **Artillery Load
+Test** Job log.
 
 Since there is only a single deployed environment, load tests are executed directly against this target as opposed to a
 Development or Staging server.
