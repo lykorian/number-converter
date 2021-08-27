@@ -27,7 +27,7 @@ The built-in HTTP server runs on port `8080`.  `/romannumeral` is the only imple
 endpoints are available for management and monitoring. See the [API documentation](https://numberconverter.lykorian.dev)
 for complete details.
 
-## GitHub Actions
+## CI/CD Workflows
 
 ### Maven Package
 
