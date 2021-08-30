@@ -33,11 +33,12 @@ for complete details.
 
 [`.github/workflows/maven-package.yml`](.github/workflows/maven-package.yml)
 
-Maven build, test, package, and upload code coverage to [Codecov](https://app.codecov.io/gh/lykorian/number-converter) for pushes to the `develop` branch.  Ensures that new commits build successfully and maintain 100% code coverage.
+Maven build, test, package, and upload code coverage to [Codecov](https://app.codecov.io/gh/lykorian/number-converter)
+for pushes to the `develop` branch. Ensures that new commits build successfully and maintain 100% code coverage.
 
 ### AWS Elastic Beanstalk Deploy
 
-[`.github/workflows/maven-deploy-eb.yml`](.github/workflows/maven-deploy-eb.yml)    
+[`.github/workflows/maven-deploy-eb.yml`](.github/workflows/maven-deploy-eb.yml)
 
 Maven build and deploy to AWS Elastic Beanstalk for pushes to the `main` branch.
 
